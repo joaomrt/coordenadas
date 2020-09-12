@@ -21,7 +21,7 @@ def abrir():
     global e_fich
 
     d_fich="%UserProfile%\Desktop" + sep
-    #pasta_defeito = os.system("%UserProfile%\Desktop" + sep if os.name == 'nt' else "$HOME/Desktop")
+    #pasta_defeito= os.system("%UserProfile%\Desktop" + sep if os.name == 'nt' else "$HOME/Desktop")
     ficheiro = tk.filedialog.askopenfilename(title="Escolher ficheiro.", filetypes = ((t_fich , e_fich),("all files","*.*")), initialdir=d_fich)
     pasta = os.path.dirname(os.path.abspath(ficheiro)) + sep
 
