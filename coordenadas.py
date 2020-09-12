@@ -38,7 +38,7 @@ class Application2(Frame):
                            'Os ficheiros dxf devem ser guardados no formato DXF R12 no Autocad\n'+
                            'para ser possível converter em formato kml.\n'+
                            'Os ficheiros kml exportados do sistema devem ser guardados novamente para \nficarem devidamente formatados.\n'+
-                           '\nHelpdesk: joao.teixeira@groupfix.pt\n\n')
+                           '\nHelpdesk: joaomrt\n\n')
         self.texto1.see(END)
 
     def actualizar_wgs84(self):
