@@ -1,2 +1,2 @@
 # coordenadas
-coordenadas groupfix
+coordenadas programa
