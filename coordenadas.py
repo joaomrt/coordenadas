@@ -1235,8 +1235,8 @@ def desenha_pontos(array_coord):
 
 #funcs.seg() #'verificacao de limite de data
 root = Tk()
-#root.iconbitmap(default='groupfix.ico')
-root.title('COORDENADAS  * * * * *   GROUPFIX N - Engenharia e Serviços')
+#root.iconbitmap(default='icone.ico')
+root.title('COORDENADAS  * * * * * ')
 funcs.settings()
 note = ttk.Notebook(root)
 note.grid()
