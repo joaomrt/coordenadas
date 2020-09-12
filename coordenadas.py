@@ -28,7 +28,7 @@ datumLambert93 = pyproj.Proj('+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3
 ###########################################################################################################################
 ######################################### INICIO DO INTERFACE #############################################################
 
-titulo = '* * * * * COORDENADAS * * * * *   GROUPFIX N - Engenharia e Serviços v2.2.0\n\n'
+titulo = '* * * * * COORDENADAS * * * * * \n\n'
 
 class Application2(Frame):
 
@@ -38,7 +38,7 @@ class Application2(Frame):
                            'Os ficheiros dxf devem ser guardados no formato DXF R12 no Autocad\n'+
                            'para ser possível converter em formato kml.\n'+
                            'Os ficheiros kml exportados do sistema devem ser guardados novamente para \nficarem devidamente formatados.\n'+
-                           '\nHelpdesk: joaomrt\n\n')
+                           '\nHelpdesk: joaomrt@github\n\n')
         self.texto1.see(END)
 
     def actualizar_wgs84(self):
@@ -57,7 +57,7 @@ class Application2(Frame):
         except:
             self.texto1.insert(END, '\nERRO DE ESCRITA. O ficheiro settings.ini não tem permissão para o user '+
                                'actual.\nEditar as permissões do user na secção de segurança das propriedades do\nficheiro ' +
-                               'settings.ini na pasta c:/programas/groupfix/coordenadas.\n')
+                               'settings.ini na pasta c:/programas/coordenadas.\n')
             self.texto1.see(END)
 
     def actualizar_datum(self, datum73):
@@ -1235,7 +1235,8 @@ def desenha_pontos(array_coord):
 
 #funcs.seg() #'verificacao de limite de data
 root = Tk()
-#root.iconbitmap(default='icone.ico')
+#root.iconbitmap(default='icone.ico') #windows
+root.iconbitmap('@icone.xbm') #linux - icon by wira wianda
 root.title('COORDENADAS  * * * * * ')
 funcs.settings()
 note = ttk.Notebook(root)

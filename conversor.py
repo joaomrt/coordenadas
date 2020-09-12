@@ -47,8 +47,8 @@ class Application4(Frame):
 		#texto de exemplo no campo
         coord_texto = '41.246483,-8.628475'
         coord_v = coord_texto.split(',')
-        latitude=coord_v[0]
-        longitude=coord_v[1]
+        #latitude=coord_v[0]
+        #longitude=coord_v[1]
 
         self.botao41 = Button(self, text='Obter WGS84', command=self.convdatum)
         self.botao41.grid(row=1, column=3, sticky=S+W)
