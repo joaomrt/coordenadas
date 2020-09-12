@@ -1,0 +1,124 @@
+http://lists.osgeo.org/pipermail/qgis-pt/2015-February/000863.html
+ 
+1.
+
+   O sistema de referência oficial nacional para Portugal continental é o
+   sistema de referência ETRS89 com a Projeção Transversa de Mercator,
+   abreviadamente designado por PT-TM06/ETRS89 e referenciado no QGIS como
+   EPSG:3763. Os sistemas de referências usados anteriormente são considerados
+   obsoletos, nomeadamente o Datum 73 (EPSG:27493), o Datum Lisboa
+   (EPSG:20791) e o Datum Lisboa Militar (EPSG:20790)
+
+
+
+Estabelecido pelo Decreto-Lei n.º 141/2014 de 19 de Setembro e recomendado
+pela Diretiva n.º 2007/2/CE do Parlamento Europeu e do Conselho, de 14 de
+março de 2007 (Diretiva INSPIRE), bem como pela EUROREF (European Reference
+Frame - a subcomissão Europeia da IAG - Associação Internacional de
+Geodesia) no simpósio realizado em Itália em 1990, onde foi estabelecida a
+adoção para o território Europeu do Sistema de Referência Terrestre Europeu
+1989 (ETRS89).
+
+O sistema de referência ETRS89 com a Projeção Transversa de Mercator,
+abreviadamente designado por PT-TM06/ETRS89, foi definido pelo Instituto
+Geográfico Português em 2006 e resulta da adoção do ETRS89 como sistema de
+referência geodésico oficial nacional, cm os seguintes parâmetros:
+
+Projeção cartográfica: Transversa de Mercator
+
+Latitude da origem das coordenadas retangulares: 39º 40’ 05’’,73 N
+
+Longitude da origem das coordenadas retangulares: 08º 07’ 59’’,19 W
+
+Falsa origem das coordenadas retangulares:
+
+Em M (distância à Meridiana): 0 m
+
+Em P (distância à Perpendicular): 0 m
+
+Coeficiente de redução de escala no meridiano central: 1,0
+
+O sistema de referência PT-TM06/ETRS89 é atualmente considerado o sistema
+oficial adotado pela Direção-Geral do Território (DGT) para Portugal
+Continental em todas as suas publicações, como por exemplo, a Carta
+Administrativa Oficial de Portugal (CAOP) e Cartografia Oficial, sendo
+aconselhada a todas as entidades públicas e privadas a substituição dos
+sistemas de referência usados anteriormente, nomeadamente o Datum 73 e o
+Datum Lisboa, sendo estes considerados obsoletos.
+
+Fonte:
+http://www.dgterritorio.pt/cartografia_e_geodesia/geodesia/sistemas_de_referencia/portugal_continental/pt_tm06_etrs89___european_terrestrial_reference_system_1989_2/
+
+
+
+2.
+
+   O método das grelhas (NTv2) é o que apresenta melhores resultados na
+   transformação de coordenadas entre os sistemas de referencia obsoletos
+   (Datum 73 e Datum Lisboa) e o sistema oficial (PT-TM06/ETRS89), e é
+   recomendado pela entidade responsável Nacional (Direção-Geral do
+   Território) em detrimento das anteriores transformações Bursa-Wolf e
+   Molodensky.
+
+
+A transformação pelo método das grelhas (NTv2) é atualmente considerado o
+método mais adequado para aplicações que requerem uma exatidão posicional
+mais rigorosa, garantindo um rigor decimétrico, e o recomendado atualmente
+pela Direção-Geral do Território para este efeito.
+
+O formato NTv2 é um formato normalizado de grelhas binárias de diferenças
+para a transformação de coordenadas planimétricas entre dois sistemas de
+referência. Os parâmetros ajustados aos pontos de controlo envolventes da
+área de trabalho são determinados por interpolação modelando assim as
+deformações da RGN no sistema de partida, obtendo-se assim precisões
+normalmente superiores às de outras transformações.
+
+A Direção-Geral do Território faculta de forma livre e gratuita no seu
+sítio da internet, ficheiros das grelhas no formato NTv2 para que possam
+ser utilizados pelos programas nos processos internos de transformação de
+coordenadas.
+
+Fonte:
+
+http://www.dgterritorio.pt/cartografia_e_geodesia/geodesia/transformacao_de_coordenadas/grelhas_em_ntv2/
+
+Estudos e publicações científicas apresentadas desde 2008 pelo Professor
+Doutor Eng. José Alberto Gonçalves da Faculdade de Ciências da Universidade
+do Porto, demonstram as vantagens e adequabilidade do uso deste método no
+território nacional continental e para os sistemas de coordenadas usados.
+
+Fonte:
+
+http://www.fc.up.pt/pessoas/jagoncal/coordenadas/
+
+
+
+3.
+
+   As definições no QGIS dos sistemas de referencia obsoletos (EPSG: 27493,
+   20790, 20791) continuam a usar parâmetros de transformação Bursa-Wolf /
+   Molodensky, confundindo os utilizadores e perpetuando erros de
+   transformação de dados para o sistema oficial totalmente evitáveis.
+
+
+As definições dos sistemas de referencia que encontramos hoje no QGIS (V
+2.6.1) são:
+
+EPSG:27493 - Datum 73 / Modified Portuguese Grid
+
++proj=tmerc +lat_0=39.66666666666 +lon_0=-8.13190611111112 +k=1
++x_0=180.598 +y_0=-86.99 +ellips=intl
++towgs84=-223.237,110.193,36.649,0,0,0,0 +units=m +no_defs
+
+EPSG:20790 - Lisbon (Lisbon)/Portuguese National Grid (Militar)
+
++proj=tmerc +lat_0=39.66666666666 +lon_0=1 +k=1 +x_0=200000 +y_0=300000
++ellips=intl +towgs84=-304.046,-60.576,103.64,0,0,0,0 +pm=lisbon +units=m
++no_defs
+
+EPSG:20791 - Lisbon (Lisbon)/Portuguese Grid
+
++proj=tmerc +lat_0=39.66666666666 +lon_0=1 +k=1 +x_0=0 +y_0=0 +ellips=intl
++towgs84=-304.046,-60.576,103.64,0,0,0,0 +pm=lisbon +units=m +no_defs
+
+
