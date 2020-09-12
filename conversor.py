@@ -18,7 +18,7 @@ class Application4(Frame):
         texto_novo = str(round(float(y),6))  + ',' + str(round(float(x),6))
         self.coordwgs.delete(0, END)
         self.coordwgs.insert(0, texto_novo)
-        tkinter.messagebox.showinfo('Teste', texto_novo)
+        #tkinter.messagebox.showinfo('Teste', texto_novo)
 
     def convwgs(self):
         #conversao wgs para datum
@@ -34,7 +34,7 @@ class Application4(Frame):
         texto_novo = str(round(float(x),2))  + ',' + str(round(float(y),2))
         self.coorddatum.delete(0, END)
         self.coorddatum.insert(0, texto_novo)
-        tkinter.messagebox.showinfo('Teste', texto_novo)
+        #tkinter.messagebox.showinfo('Teste', texto_novo)
 
     def limpar_coord(self):
         self.coordwgs.delete(0, END)
