@@ -1,5 +1,5 @@
-pyinstaller coordenadas.py -i groupfix.ico --noconsole
-copy groupfix.ico dist\coordenadas\
+pyinstaller coordenadas.py -i icone.ico --noconsole
+copy icone.ico dist\coordenadas\
 xcopy settings.ini dist\coordenadas\
 mkdir dist\coordenadas\ficheiros
 xcopy /y ficheiros dist\coordenadas\ficheiros\
