@@ -246,7 +246,7 @@ class Application3(Frame):
 
         self.texto2 = Text(self)
         self.texto2.grid(row=2, column=1, columnspan=9, sticky=N+S+E+W)
-        self.texto2.insert(INSERT, '* * * * * COORDENADAS * * * * *   GROUPFIX N - Engenharia e Serviços\n')
+        self.texto2.insert(INSERT, '* * * * * COORDENADAS * * * * * \n')
         self.texto2.insert(INSERT, '\nInterface de conversão de listagens txt em blocos autocad (via ficheiro .scr).\n'+
                            'Exemplos de nomes de elementos de rede: A123, AEDP123, EDP-123, CVP_123.\n'+
                            'Os ficheiros com blocos estao disponíveis na pasta de instalação deste programa.\n'+
