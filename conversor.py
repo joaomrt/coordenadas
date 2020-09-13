@@ -1,7 +1,7 @@
 import tkinter.messagebox
 import funcs
 from tkinter import *
-from idlelib import *
+from idlelib import tooltip
 
 class Application4(Frame):
 
@@ -52,15 +52,15 @@ class Application4(Frame):
 
         self.botao41 = Button(self, text='Obter WGS84', command=self.convdatum)
         self.botao41.grid(row=1, column=3, sticky=S+W)
-        #tip_botao41 = ToolTip(self.botao41, 'Converte as coordenadas em Datum para WGS84')
+        tip_botao41 = tooltip.Hovertip(self.botao41, 'Converte as coordenadas em Datum para WGS84')
 
         self.botao42 = Button(self, text='Obter Datum', command=self.convwgs)
         self.botao42.grid(row=2, column=3, sticky=S+W)
-        #tip_botao42 = ToolTip(self.botao42, 'Converte as coordenadas em WGS84 para Datum')
+        tip_botao42 = tooltip.Hovertip(self.botao42, 'Converte as coordenadas em WGS84 para Datum')
 
         self.botao43 = Button(self, text='Limpar', command=self.limpar_coord)
         self.botao43.grid(row=3, column=3, sticky=N+S+W)
-        #tip_botao43 = ToolTip(self.botao43, 'Limpa os campos de dados')
+        tip_botao43 = tooltip.Hovertip(self.botao43, 'Limpa os campos de dados')
 
         self.coordwgs_lab = Label(self, text='Lat, Long')
         self.coordwgs_lab.grid(row=2, column=1, sticky=S+W)
