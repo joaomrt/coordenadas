@@ -37,7 +37,8 @@ class Application2(Frame):
                            '\nformato: nome_do_ponto coordenada_x coordenada_y.\n'+
                            'Os ficheiros dxf devem ser guardados no formato DXF R12 no Autocad\n'+
                            'para ser possível converter em formato kml.\n'+
-                           'Os ficheiros kml exportados do sistema devem ser guardados novamente para \nficarem devidamente formatados.\n'+
+                           'Os ficheiros kml exportados do sistema devem ser guardados novamente no \n'+
+                           'Google Earth para ficarem devidamente formatados.\n'+
                            '\nHelpdesk: joaomrt@github\n\n')
         self.texto1.see(END)
 
@@ -160,7 +161,7 @@ class Application2(Frame):
 
         self.botao01 = Button(self, text='Tab WGS-KML', command=wgs2kml)
         self.botao01.grid(row=3, column=2, sticky=N+S+E+W)
-        tip_botao01 = tooltip.Hovertip(self.botao01, 'Converte uma listagem de pontos com coordenadas WGS84 para um ficheiro kml. Pode ter uma quarta coluna com observações')
+        tip_botao01 = tooltip.Hovertip(self.botao01, 'Converte uma listagem de pontos com coordenadas WGS84 para um ficheiro kml.\nPode ter uma quarta coluna com observações')
 
         self.botao02 = Button(self, text='Tab UTM-KML', command=utm2kml)
         self.botao02.grid(row=3, column=3, sticky=N+S+E+W)
@@ -168,39 +169,39 @@ class Application2(Frame):
 
         self.botao03 = Button(self, text='KML-Tab UTM', command=kml2utm)
         self.botao03.grid(row=3, column=4, sticky=N+S+E+W)
-        tip_botao03 = tooltip.Hovertip(self.botao03, 'Converte pontos existentes dentro de um ficheiro kml numa listagem de coordenadas UTM (txt)')
+        tip_botao03 = tooltip.Hovertip(self.botao03, 'Converte pontos existentes dentro de um ficheiro kml\nnuma listagem de coordenadas UTM (txt)')
 
         self.botao06 = Button(self, text='KML-DXF_UTM', command=kml2dxf_wgs84)
         self.botao06.grid(row=4, column=4, sticky=N+S+E+W)
-        tip_botao06 = tooltip.Hovertip(self.botao06, 'Converte os pontos e linhas de um ficheiro kml para um ficheiro CAD (dxf) com coordenadas UTM')
+        tip_botao06 = tooltip.Hovertip(self.botao06, 'Converte os pontos e linhas de um ficheiro kml para\num ficheiro CAD (dxf) com coordenadas UTM')
 
         self.botao07 = Button(self, text='DXF_UTM-KML', command=dxf2kmlwgs84)
         self.botao07.grid(row=4, column=2, sticky=N+S+E+W)
-        tip_botao07 = tooltip.Hovertip(self.botao07, 'Converte textos e linhas de um ficheiro CAD (dxf) com coordenadas UTM para um ficheiro kml')
+        tip_botao07 = tooltip.Hovertip(self.botao07, 'Converte textos e linhas de um ficheiro CAD (dxf) com\ncoordenadas UTM para um ficheiro kml')
 
         self.botao09 = Button(self, text='KML-Tab WGS', command=kml2wgs84)
         self.botao09.grid(row=4, column=3, sticky=N+S+E+W)
-        tip_botao09 = tooltip.Hovertip(self.botao09, 'Extrai as coordenadas WGS84 de todos os pontos existentes num ficheiro kml para um ficheiro de texto')
+        tip_botao09 = tooltip.Hovertip(self.botao09, 'Extrai as coordenadas WGS84 de todos os pontos existentes\nnum ficheiro kml para um ficheiro de texto')
 
         self.botao11 = Button(self, text='Tab Datum-WGS', command=datum73mod2wgs)
         self.botao11.grid(row=3, column=6, sticky=N+S+E+W)
-        tip_botao11 = tooltip.Hovertip(self.botao11, 'Converte uma listagem de pontos com coordenadas Datum para uma listagem de coordenadas WGS84')
+        tip_botao11 = tooltip.Hovertip(self.botao11, 'Converte uma listagem de pontos com coordenadas\nDatum para uma listagem de coordenadas WGS84')
 
         self.botao12 = Button(self, text='Tab Datum-KML', command=datum73mod2kml)
         self.botao12.grid(row=3, column=7, sticky=N+S+E+W)
-        tip_botao12 = tooltip.Hovertip(self.botao12, 'Converte uma listagem de pontos com coordenadas Datum para um ficheiro kml')
+        tip_botao12 = tooltip.Hovertip(self.botao12, 'Converte uma listagem de pontos com\ncoordenadas Datum para um ficheiro kml')
 
         self.botao13 = Button(self, text='KML-Tab Datum', command=kml2datum73mod)
         self.botao13.grid(row=3, column=8, sticky=N+S+E+W)
-        tip_botao13 = tooltip.Hovertip(self.botao13, 'Converte pontos existentes dentro de um ficheiro kml numa listagem de coordenadas Datum (txt)')
+        tip_botao13 = tooltip.Hovertip(self.botao13, 'Converte pontos existentes dentro de um ficheiro kml\nnuma listagem de coordenadas Datum (txt)')
 
         self.botao16 = Button(self, text='KML-DXF_Datum', command=kml2dxf_datum73mod)
         self.botao16.grid(row=4, column=8, sticky=N+S+E+W)
-        tip_botao16 = tooltip.Hovertip(self.botao16, 'Converte os pontos e linhas de um ficheiro kml para um ficheiro CAD (dxf) com coordenadas Datum')
+        tip_botao16 = tooltip.Hovertip(self.botao16, 'Converte os pontos e linhas de um ficheiro kml para\num ficheiro CAD (dxf) com coordenadas Datum')
 
         self.botao17 = Button(self, text='DXF_Datum-KML', command=dxf2kmldatum73mod)
         self.botao17.grid(row=4, column=6, sticky=N+S+E+W)
-        tip_botao17 = tooltip.Hovertip(self.botao17, 'Converte textos e linhas de um ficheiro CAD (dxf) com coordenadas Datum para um ficheiro kml')
+        tip_botao17 = tooltip.Hovertip(self.botao17, 'Converte textos e linhas de um ficheiro CAD (dxf) com\ncoordenadas Datum para um ficheiro kml')
 
         self.botao18 = Button(self, text='Tab WGS-Datum', command=wgs2datum73mod)
         self.botao18.grid(row=4, column=7, sticky=N+S+E+W)
@@ -218,7 +219,7 @@ class Application2(Frame):
 
         self.botao18 = Button(self, text='Pré-visualizar', command=preview)
         self.botao18.grid(row=2, column=10, sticky=E+W)
-        tip_botao18 = tooltip.Hovertip(self.botao18, 'Desenha os pontos de uma listagem de coordenadas (Não mantém a escala nem o racio)')
+        tip_botao18 = tooltip.Hovertip(self.botao18, 'Desenha os pontos de uma listagem de coordenadas\n(Não mantém a escala nem o racio)')
         self.botao19 = Button(self, text='Limpar', command=clear)
         self.botao19.grid(row=2, column=11, sticky=E+W)
         tip_botao19 = tooltip.Hovertip(self.botao19, 'Limpa a área de desenho')
