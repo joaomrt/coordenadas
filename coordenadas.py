@@ -13,6 +13,8 @@ from dxfwrite import DXFEngine as dxf
 import pyproj
 from idlelib import tooltip
 
+#from tkinter.ttk import * #estraga a lista, desaparece o primeiro item
+
 sep = os.sep
 #lib_path = os.path.abspath('.'+sep+'lib'+sep) #permite ir buscar modulos a nossa pasta, amazing!
 #sys.path.append(lib_path)
@@ -20,11 +22,12 @@ sep = os.sep
 
 wgs84 = pyproj.Proj('+init=EPSG:4326') # LatLon with WGS84 datum used by GPS units and Google Earth
 pttm06 = pyproj.Proj('+proj=tmerc +lat_0=39.66825833333333 +lon_0=-8.133108333333334 +k=1 +x_0=0 +y_0=0 +ellps=GRS80 +units=m +no_defs')#PT-TM06/ETRS89 EPSG:3763
-datum73IPCC = pyproj.Proj('+proj=tmerc +lat_0=39.66666666666666 +lon_0=-8.131906111111112 +k=1 +x_0=180.598 +y_0=-86.98999999999999 +ellps=intl +units=m +no_defs')#Datum 73 Hayford Gauss IPCC "ESRI:102161"
-datum73IGeoE = pyproj.Proj('+proj=tmerc +lat_0=39.66666666666666 +lon_0=-8.131906111111112 +k=1 +x_0=200180.598 +y_0=299913.01 +ellps=intl +units=m +no_defs')#Datum_73_Hayford_Gauss_IGeoE "ESRI:102160"
 datumOSGB36 = pyproj.Proj('+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +datum=OSGB36 +units=m +no_defs')#OSGB-1936-EPSG:27700
-datumLambert93 = pyproj.Proj('+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs')#Lambert-93-EPSG:2154
-
+datumLambert93 = pyproj.Proj('+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs')#Lambert-93-"EPSG:2154"
+datumietm75 = pyproj.Proj('+proj=tmerc +lat_0=53.5 +lon_0=-8 +k=1.000035 +x_0=200000 +y_0=250000 +a=6377340.189 +rf=299.3249646 +towgs84=482.5,-130.6,564.6,-1.042,-0.214,-0.631,8.15 +units=m +no_defs')#TM75 Irish National Grid "EPSG:29903"
+#datum73IPCC = pyproj.Proj('+proj=tmerc +lat_0=39.66666666666666 +lon_0=-8.131906111111112 +k=1 +x_0=180.598 +y_0=-86.98999999999999 +ellps=intl +units=m +no_defs')#Datum 73 Hayford Gauss IPCC "ESRI:102161"
+#datum73IGeoE = pyproj.Proj('+proj=tmerc +lat_0=39.66666666666666 +lon_0=-8.131906111111112 +k=1 +x_0=200180.598 +y_0=299913.01 +ellps=intl +units=m +no_defs')#Datum_73_Hayford_Gauss_IGeoE "ESRI:102160"
+#alt-ie pyproj.Proj('+proj=tmerc +lat_0=53.5 +lon_0=-8 +k=1.000035 +x_0=200000 +y_0=250000 +ellps=mod_airy +towgs84=482.5,-130.6,564.6,-1.042,-0.214,-0.631,8.15 +units=m +no_defs')
 ###########################################################################################################################
 ######################################### INICIO DO INTERFACE #############################################################
 
@@ -116,7 +119,7 @@ class Application2(Frame):
         datum73 = StringVar(self)
         datum73.set(datum) # default value
 
-        self.lista = OptionMenu(self, datum73, "PT-TM06", "IPCC", "IGeoE", "OSGB36", "Lambert93", command=self.actualizar_datum).grid(row=2, column=7)
+        self.lista = OptionMenu(self, datum73, "PT-TM06", "OSGB36", "Lambert93", "IE-TM75", command=self.actualizar_datum).grid(row=2, column=7)
 
         self.ajuda = Button(self)
         self.ajuda['text'] = 'Ajuda'
@@ -340,14 +343,12 @@ def wgs2datum73mod():
     funcs.ver_datum()
     if "TM06" in funcs.datum1:
         conv2 = pttm06
-    if "IPCC" in funcs.datum1:
-        conv2 = datum73IPCC
-    if "IGeoE" in funcs.datum1:
-        conv2 = datum73IGeoE
     if "OSGB36" in funcs.datum1:
         conv2 = datumOSGB36
     if "Lambert93" in funcs.datum1:
         conv2 = datumLambert93
+    if "TM75" in funcs.datum1:
+        conv2 = datumietm75
 
     strfich = '_coord_datum.txt'
 
@@ -359,14 +360,12 @@ def datum73mod2wgs():
     funcs.ver_datum()
     if "TM06" in funcs.datum1:
         conv1 = pttm06
-    if "IPCC" in funcs.datum1:
-        conv1 = datum73IPCC
-    if "IGeoE" in funcs.datum1:
-        conv1 = datum73IGeoE
     if "OSGB36" in funcs.datum1:
         conv1 = datumOSGB36
     if "Lambert93" in funcs.datum1:
         conv1 = datumLambert93
+    if "TM75" in funcs.datum1:
+        conv1 = datumietm75
     conv2 = wgs84
     strfich = '_coord_WGS84.txt'
 
@@ -489,14 +488,12 @@ def datum73mod2kml():
     funcs.ver_datum()
     if "TM06" in funcs.datum1:
         conv1 = pttm06
-    if "IPCC" in funcs.datum1:
-        conv1 = datum73IPCC
-    if "IGeoE" in funcs.datum1:
-        conv1 = datum73IGeoE
     if "OSGB36" in funcs.datum1:
         conv1 = datumOSGB36
     if "Lambert93" in funcs.datum1:
         conv1 = datumLambert93
+    if "TM75" in funcs.datum1:
+        conv1 = datumietm75
     conv2 = wgs84
     strfich = '_coord_kml_datum-WGS84.kml'
 
@@ -644,14 +641,12 @@ def kml2datum73mod():
     funcs.ver_datum()
     if "TM06" in funcs.datum1:
         conv2 = pttm06
-    if "IPCC" in funcs.datum1:
-        conv2 = datum73IPCC
-    if "IGeoE" in funcs.datum1:
-        conv2 = datum73IGeoE
     if "OSGB36" in funcs.datum1:
         conv2 = datumOSGB36
     if "Lambert93" in funcs.datum1:
         conv2 = datumLambert93
+    if "TM75" in funcs.datum1:
+        conv2 = datumietm75
     strfich = '_coord_datum.txt'
 
     kml2x(strtab, conv1, conv2, strfich)
@@ -919,14 +914,12 @@ def kml2dxf_datum73mod(): #=====================================================
     funcs.ver_datum()
     if "TM06" in funcs.datum1:
         conv2 = pttm06
-    if "IPCC" in funcs.datum1:
-        conv2 = datum73IPCC
-    if "IGeoE" in funcs.datum1:
-        conv2 = datum73IGeoE
     if "OSGB36" in funcs.datum1:
         conv2 = datumOSGB36
     if "Lambert93" in funcs.datum1:
         conv2 = datumLambert93
+    if "TM75" in funcs.datum1:
+        conv2 = datumietm75
     strfich = '_coordenadas_datum.dxf'
     kml2dxf_x(strtab, conv1, conv2, strfich)
 
@@ -1114,14 +1107,12 @@ def dxf2kmldatum73mod():
     funcs.ver_datum()
     if "TM06" in funcs.datum1:
         conv1 = pttm06
-    if "IPCC" in funcs.datum1:
-        conv1 = datum73IPCC
-    if "IGeoE" in funcs.datum1:
-        conv1 = datum73IGeoE
     if "OSGB36" in funcs.datum1:
         conv1 = datumOSGB36
     if "Lambert93" in funcs.datum1:
         conv1 = datumLambert93
+    if "TM75" in funcs.datum1:
+        conv2 = datumietm75
     conv2 = wgs84
     strfich = '_coord_kml_WGS84.kml'
     dxf2kml_x(strtab, conv1, conv2, strfich)

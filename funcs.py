@@ -77,7 +77,7 @@ def seg():
 
         semana, mes, dia, hora, ano = data_completa.split(" ", 4)
 
-        if int(ano) > 2018:
+        if int(ano) > 2022:
             sys.exit(0)
 
     except:
@@ -119,24 +119,23 @@ def conva2b(texto_conv,tipo_conv):
 
     wgs84 = pyproj.Proj('+init=EPSG:4326') # LatLon with WGS84 datum used by GPS units and Google Earth
     pttm06 = pyproj.Proj('+proj=tmerc +lat_0=39.66825833333333 +lon_0=-8.133108333333334 +k=1 +x_0=0 +y_0=0 +ellps=GRS80 +units=m +no_defs')#PT-TM06/ETRS89 EPSG:3763
-    datum73IPCC = pyproj.Proj('+proj=tmerc +lat_0=39.66666666666666 +lon_0=-8.131906111111112 +k=1 +x_0=180.598 +y_0=-86.98999999999999 +ellps=intl +units=m +no_defs')#Datum 73 Hayford Gauss IPCC "ESRI:102161"
-    datum73IGeoE = pyproj.Proj('+proj=tmerc +lat_0=39.66666666666666 +lon_0=-8.131906111111112 +k=1 +x_0=200180.598 +y_0=299913.01 +ellps=intl +units=m +no_defs')#Datum_73_Hayford_Gauss_IGeoE "ESRI:102160"
+    #datum73IPCC = pyproj.Proj('+proj=tmerc +lat_0=39.66666666666666 +lon_0=-8.131906111111112 +k=1 +x_0=180.598 +y_0=-86.98999999999999 +ellps=intl +units=m +no_defs')#Datum 73 Hayford Gauss IPCC "ESRI:102161"
+    #datum73IGeoE = pyproj.Proj('+proj=tmerc +lat_0=39.66666666666666 +lon_0=-8.131906111111112 +k=1 +x_0=200180.598 +y_0=299913.01 +ellps=intl +units=m +no_defs')#Datum_73_Hayford_Gauss_IGeoE "ESRI:102160"
     datumOSGB36 = pyproj.Proj('+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +datum=OSGB36 +units=m +no_defs')#OSGB-1936-EPSG:27700
     datumLambert93 = pyproj.Proj('+proj=lcc +lat_1=49 +lat_2=44 +lat_0=46.5 +lon_0=3 +x_0=700000 +y_0=6600000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs')#Lambert-93-EPSG:2154
+    datumietm75 = pyproj.Proj('+proj=tmerc +lat_0=53.5 +lon_0=-8 +k=1.000035 +x_0=200000 +y_0=250000 +a=6377340.189 +rf=299.3249646 +towgs84=482.5,-130.6,564.6,-1.042,-0.214,-0.631,8.15 +units=m +no_defs')#TM75 Irish National Grid "EPSG:29903"
 
     global strcoord
 
     ver_datum()
     if "TM06" in datum1:
         sist1 = pttm06
-    if "IPCC" in datum1:
-        sist1 = datum73IPCC
-    if "IGeoE" in datum1:
-        sist1 = datum73IGeoE
     if "OSGB36" in datum1:
         sist1 = datumOSGB36
     if "Lambert93" in datum1:
         sist1 = datumLambert93
+    if "TM75" in datum1:
+        sist1 = datumietm75
     sist2 = wgs84
 
     xi,yi = texto_conv.split(",", 1)
